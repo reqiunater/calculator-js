@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>calculator</title>
+
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+        .screen-wrapper {
+            width: 100vw;
+            height: 100vh;
+            background-color: aqua;
+        }
+
+        .screen-wrapper .screen {
+            max-width: 50vw;
+            height: 100vh;
+            background-color: cadetblue;
+            display: flex;
+            flex-direction: column;
+            margin: auto;
+            justify-content: center;
+            align-items: center;
+        }
+        .display {
+            width: 90%;
+        }
+
+        .row1 button, 
+        .row2 button, 
+        .row3 button, 
+        .row4 button {
+            margin: 5px;
+            padding: 10px;
+            background-color: blue;
+            color: white;
+            width: 10vw;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="screen-wrapper">
+        <div class="screen">
+            <input type="text" id="display" class="display" readonly>
+            <div class="row1">
+                <button onclick="insertDisplay(this)">1</button>
+                <button onclick="insertDisplay(this)">2</button>
+                <button onclick="insertDisplay(this)">3</button>
+            </div>
+            <div class="row2">
+                <button onclick="insertDisplay(this)">4</button>
+                <button onclick="insertDisplay(this)">5</button>
+                <button onclick="insertDisplay(this)">6</button>
+            </div>
+            <div class="row3">
+                <button onclick="insertDisplay(this)">7</button>
+                <button onclick="insertDisplay(this)">8</button>
+                <button onclick="insertDisplay(this)">9</button>
+            </div>
+            <div class="row4">
+                <button onclick="insertDisplay(this)">+</button>
+                <button onclick="insertDisplay(this)">-</button>
+                <button onclick="calculate()">=</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let display = document.getElementById('display');
+
+        function insertDisplay(num) {
+            display.value += num.textContent;
+        }
+
+        function calculate() {
+            try {
+                display.value = eval(display.value);
+            } catch {
+                display.value("Error");
+            }
+        }
+
+
+
+    </script>
+</body>
+</html>
